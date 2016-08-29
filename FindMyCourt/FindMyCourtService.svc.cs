@@ -28,6 +28,12 @@ namespace FindMyCourt
             return UserRest.GetUser(pkid);
         }
 
+        public Stream GetUser(string username, string email)
+        {
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
+            return UserRest.GetUser(username, email);
+        }
+
         public Stream GetLocations(string minLat, string maxLat, string minLon, string maxLon)
         {
             return LocationRest.GetLocations(minLat, maxLat, minLon, maxLon);

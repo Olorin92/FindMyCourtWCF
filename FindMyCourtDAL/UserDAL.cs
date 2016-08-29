@@ -26,6 +26,18 @@ namespace FindMyCourtDAL
             return comm.ExecuteReader();
         }
 
+        public SqlDataReader GetUser(string username, string email)
+        {
+            SqlCommand comm = Connection.CreateCommand();
+            comm.CommandType = System.Data.CommandType.StoredProcedure;
+
+            comm.CommandText = "usp_GetUserByNameAndEmail";
+            comm.Parameters.AddWithValue("@USER_NAME", username);
+            comm.Parameters.AddWithValue("@EMAIL", email);
+
+            return comm.ExecuteReader();
+        }
+
         public int CreateUser(string firstName,
                               string lastName,
                               string userName,

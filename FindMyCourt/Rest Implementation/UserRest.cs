@@ -25,5 +25,12 @@ namespace FindMyCourt.Rest_Implementation
             string serialization = JsonConvert.SerializeObject(user);
             return new MemoryStream(Encoding.UTF8.GetBytes(serialization));
         }
+
+        public static Stream GetUser(string userName, string email)
+        {
+            User user = User.GetUser(userName, email);
+            string serialization = JsonConvert.SerializeObject(user);
+            return new MemoryStream(Encoding.UTF8.GetBytes(serialization));
+        }
     }
 }

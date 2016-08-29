@@ -27,6 +27,12 @@ namespace FindMyCourt
         [return: MessageParameter(Name = "User")]
         Stream GetUser(string pkid);
 
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Users?username={username}&email={email}",
+            Method = "GET")]
+        [return: MessageParameter(Name = "User")]
+        Stream GetUser(string username, string email);
+
         #endregion
 
         #region LocationMethods

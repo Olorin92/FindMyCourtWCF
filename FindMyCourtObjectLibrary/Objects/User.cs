@@ -165,6 +165,22 @@ namespace FindMyCourtObjectLibrary.Objects
             return user;
         }
 
+        public static User GetUser(string username, string email)
+        {
+            User user = new User();
+
+            using (UserDAL dal = new UserDAL("environment"))
+            {
+                using (SqlDataReader dr = dal.GetUser(username, email))
+                {
+                    dr.Read();
+                    user.Fetch(dr);
+                }
+            }
+
+            return user;
+        }
+
         private void Fetch(SqlDataReader dr)
         {
             _pkid = (int)dr["USER_ID"];
