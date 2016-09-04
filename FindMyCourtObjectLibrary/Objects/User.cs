@@ -165,6 +165,44 @@ namespace FindMyCourtObjectLibrary.Objects
             return user;
         }
 
+        public static List<User> GetUsers()
+        {
+            List<User> users = new List<User>();
+
+            using (UserDAL dal = new UserDAL("environment"))
+            {
+                using (SqlDataReader dr = dal.GetUsers())
+                {
+                    while (dr.Read())
+                    {
+                        User user = new User();
+                        user.Fetch(dr);
+
+                        users.Add(user);
+                    }
+                }
+            }
+
+            return users;
+        }
+
+        public static User GetUser(string email, string username)
+        {
+            User user = new User();
+
+            using (UserDAL dal = new UserDAL("environment"))
+            {
+                using (SqlDataReader dr = dal.GetUser(email, username))
+                {
+                    dr.Read();
+                    user = new User();
+                    user.Fetch(dr);
+                }
+            }
+
+            return user;
+        }
+
         private void Fetch(SqlDataReader dr)
         {
             _pkid = (int)dr["USER_ID"];

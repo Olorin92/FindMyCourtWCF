@@ -105,6 +105,7 @@
       <DependentUpon>FindMyCourtService.svc</DependentUpon>
     </Compile>
     <Compile Include="IFindMyCourtService.cs" />
+    <Compile Include="Rest Implementation\CourtRest.cs" />
     <Compile Include="Rest Implementation\LocationRest.cs" />
     <Compile Include="Rest Implementation\UserRest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

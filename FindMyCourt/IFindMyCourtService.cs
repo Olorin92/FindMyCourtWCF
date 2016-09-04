@@ -27,6 +27,18 @@ namespace FindMyCourt
         [return: MessageParameter(Name = "User")]
         Stream GetUser(string pkid);
 
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Users?email={email}&username={username}",
+            Method = "GET")]
+        [return: MessageParameter(Name = "User")]
+        Stream GetUsersFiltered(string email, string username);
+
+        //[OperationContract]
+        //[WebInvoke(UriTemplate = "Users",
+        //    Method = "GET")]
+        //[return: MessageParameter(Name = "User")]
+        //Stream GetUsers();
+
         #endregion
 
         #region LocationMethods
@@ -52,7 +64,17 @@ namespace FindMyCourt
 
         #region CourtMethods
 
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Courts/{id}",
+            Method = "GET")]
+        [return: MessageParameter(Name = "Court")]
+        Stream GetCourt(string id);
 
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Locations/{locationID}/Courts",
+            Method = "GET")]
+        [return: MessageParameter(Name = "Courts")]
+        Stream GetCourts(string locationID);
 
         #endregion
     }

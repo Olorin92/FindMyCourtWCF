@@ -28,8 +28,22 @@ namespace FindMyCourt
             return UserRest.GetUser(pkid);
         }
 
+        [return: MessageParameter(Name = "User")]
+        public Stream GetUsersFiltered(string email, string username)
+        {
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
+            return UserRest.GetUser(email, username);
+        }
+
+        //public Stream GetUsers()
+        //{
+        //    WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
+        //    return UserRest.GetUsers();
+        //}
+
         public Stream GetLocations(string minLat, string maxLat, string minLon, string maxLon)
         {
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
             return LocationRest.GetLocations(minLat, maxLat, minLon, maxLon);
         }
 
@@ -43,7 +57,20 @@ namespace FindMyCourt
 
         public Stream GetLocation(string pkid)
         {
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
             return LocationRest.GetLocation(pkid);
+        }
+
+        public Stream GetCourt(string id)
+        {
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
+            return CourtRest.GetCourt(id);
+        }
+
+        public Stream GetCourts(string locationID)
+        {
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
+            return CourtRest.GetCourts(locationID);
         }
     }
 }
