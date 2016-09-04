@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,7 +13,9 @@ namespace FindMyCourtObjectLibrary.Objects
     // and subsequently, know whether to save it or not
     public abstract class SaveableObject : INotifyPropertyChanged
     {
+        [JsonIgnore]
         public bool IsNew { get; set; }
+        [JsonIgnore]
         public bool IsDirty { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;

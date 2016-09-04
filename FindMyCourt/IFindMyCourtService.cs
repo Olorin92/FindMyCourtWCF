@@ -49,5 +49,11 @@ namespace FindMyCourt
         [return: MessageParameter(Name = "PKID")]
         int InsertLocation(Stream location);
         #endregion
+
+        #region CourtMethods
+
+
+
+        #endregion
     }
 }

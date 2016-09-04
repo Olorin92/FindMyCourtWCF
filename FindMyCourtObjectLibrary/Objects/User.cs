@@ -101,18 +101,18 @@ namespace FindMyCourtObjectLibrary.Objects
             }
         }
 
-        public string SaltedPassword
-        {
-            get
-            {
-                return _saltedPassword;
-            }
-            set
-            {
-                _saltedPassword = value;
-                OnPropertyChanged("SaltedPassword");
-            }
-        }
+        //public string SaltedPassword
+        //{
+        //    get
+        //    {
+        //        return _saltedPassword;
+        //    }
+        //    set
+        //    {
+        //        _saltedPassword = value;
+        //        OnPropertyChanged("SaltedPassword");
+        //    }
+        //}
 
         public int? HomeLocationID
         {
@@ -131,10 +131,10 @@ namespace FindMyCourtObjectLibrary.Objects
         // We will not store the plaintext password, only the salted version
         public string Password
         {
-            get
-            {
-                return _password;
-            }
+            //get
+            //{
+            //    return _password;
+            //}
             set
             {
                 _password = value;
@@ -184,7 +184,7 @@ namespace FindMyCourtObjectLibrary.Objects
         {
             using (UserDAL dal = new UserDAL("environment"))
             {
-                PKID = dal.CreateUser(FirstName, LastName, UserName, EmailAddress, Salt, SaltedPassword);
+                PKID = dal.CreateUser(FirstName, LastName, UserName, EmailAddress, Salt, _saltedPassword);
             }
         }
 
