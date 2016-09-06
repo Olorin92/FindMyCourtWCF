@@ -20,6 +20,8 @@ namespace FindMyCourtDAL
         {
             SqlCommand comm = Connection.CreateCommand();
             comm.CommandText = "usp_GetLocations";
+            comm.CommandType = System.Data.CommandType.StoredProcedure;
+
             comm.Parameters.AddWithValue("@LAT_MIN", minLat);
             comm.Parameters.AddWithValue("@LAT_MAX", maxLat);
             comm.Parameters.AddWithValue("@LONG_MIN", minLon);
@@ -32,6 +34,8 @@ namespace FindMyCourtDAL
         {
             SqlCommand comm = Connection.CreateCommand();
             comm.CommandText = "usp_GetLocation";
+            comm.CommandType = System.Data.CommandType.StoredProcedure;
+
             comm.Parameters.AddWithValue("@LOCATION_ID", locationID);
 
             return comm.ExecuteReader();
