@@ -72,5 +72,13 @@ namespace FindMyCourt
             WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
             return CourtRest.GetCourts(locationID);
         }
+
+        public int InsertCourt(Stream court)
+        {
+            using (StreamReader reader = new StreamReader(court))
+            {
+                return CourtRest.InsertCourt(reader.ReadToEnd());
+            }
+        }
     }
 }

@@ -10,13 +10,110 @@ namespace FindMyCourtObjectLibrary.Objects
 {
     public class Court : SaveableObject
     {
-        public int PKID { get; set; }
-        public string CourtName { get; set; }
-        public int CourtTypeID { get; set; }
-        public int BackboardTypeID { get; set; }
-        public bool HasNet { get; set; }
-        public bool HasScoreboard { get; set; }
-        public string SubmittedUserName { get; set; }
+        private int _pkid;
+        private int _locationID;
+        private string _courtName;
+        private int _courtTypeID;
+        private int _backboardTypeID;
+        private bool _hasNet;
+        private bool _hasScoreboard;
+        private string _submittedUserName;
+
+        public int PKID
+        {
+            get
+            {
+                return _pkid;
+            }
+            set
+            {
+                _pkid = value;
+                OnPropertyChanged("PKID");
+            }
+        }
+        public int LocationID
+        {
+            get
+            {
+                return _locationID;
+            }
+            set
+            {
+                _locationID = value;
+                OnPropertyChanged("LocationID");
+            }
+        }
+        public string CourtName
+        {
+            get
+            {
+                return _courtName;
+            }
+            set
+            {
+                _courtName = value;
+                OnPropertyChanged("CourtName");
+            }
+        }
+        public int CourtTypeID
+        {
+            get
+            {
+                return _courtTypeID;
+            }
+            set
+            {
+                _courtTypeID = value;
+                OnPropertyChanged("CourtTypeID");
+            }
+        }
+        public int BackboardTypeID
+        {
+            get
+            {
+                return _backboardTypeID;
+            }
+            set
+            {
+                _backboardTypeID = value;
+                OnPropertyChanged("BackboardTypeID");
+            }
+        }
+        public bool HasNet
+        {
+            get
+            {
+                return _hasNet;
+            }
+            set
+            {
+                _hasNet = value;
+            }
+        }
+        public bool HasScoreboard
+        {
+            get
+            {
+                return _hasScoreboard;
+            }
+            set
+            {
+                _hasScoreboard = value;
+                OnPropertyChanged("HasScoreboard");
+            }
+        }
+        public string SubmittedUserName
+        {
+            get
+            {
+                return _submittedUserName;
+            }
+            set
+            {
+                _submittedUserName = value;
+                OnPropertyChanged("SubmittedUSerName");
+            }
+        }
 
         public static Court GetCourt(int pkid)
         {
@@ -70,7 +167,10 @@ namespace FindMyCourtObjectLibrary.Objects
 
         protected override void Insert()
         {
-            throw new NotImplementedException();
+            using (CourtDAL dal = new CourtDAL("environment"))
+            {
+                _pkid = dal.InsertCourt(CourtName, LocationID, CourtTypeID, BackboardTypeID, HasNet, HasScoreboard, SubmittedUserName);
+            }
         }
 
         protected override void Update()

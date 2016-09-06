@@ -101,18 +101,18 @@ namespace FindMyCourtObjectLibrary.Objects
             }
         }
 
-        //public string SaltedPassword
-        //{
-        //    get
-        //    {
-        //        return _saltedPassword;
-        //    }
-        //    set
-        //    {
-        //        _saltedPassword = value;
-        //        OnPropertyChanged("SaltedPassword");
-        //    }
-        //}
+        public string SaltedPassword
+        {
+            get
+            {
+                return _saltedPassword;
+            }
+            set
+            {
+                _saltedPassword = value;
+                OnPropertyChanged("SaltedPassword");
+            }
+        }
 
         public int? HomeLocationID
         {

@@ -40,7 +40,7 @@ namespace FindMyCourtDAL
         public int InsertLocation(string name,
                                   double longitude,
                                   double latitude,
-                                  int createUser)
+                                  string createUser)
         {
             SqlCommand comm = Connection.CreateCommand();
             comm.CommandText = "usp_InsertLocation";

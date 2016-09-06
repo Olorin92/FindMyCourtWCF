@@ -76,6 +76,12 @@ namespace FindMyCourt
         [return: MessageParameter(Name = "Courts")]
         Stream GetCourts(string locationID);
 
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Courts",
+            Method = "POST")]
+        [return: MessageParameter(Name = "Court")]
+        int InsertCourt(Stream court);
+
         #endregion
     }
 }

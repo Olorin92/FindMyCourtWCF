@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,33 @@ namespace FindMyCourtDAL
             comm.Parameters.AddWithValue("@LOCATION_ID", locationID);
 
             return comm.ExecuteReader();
+        }
+
+        public int InsertCourt(string courtName,
+                               int locationID,
+                               int courtTypeID,
+                               int backboardTypeID,
+                               bool hasNet,
+                               bool hasScoreboard,
+                               string createUser)
+        {
+            SqlCommand comm = Connection.CreateCommand();
+            comm.CommandType = System.Data.CommandType.StoredProcedure;
+            comm.CommandText = "usp_InsertCourt";
+
+            comm.Parameters.Add("@PKID", SqlDbType.Int);
+            comm.Parameters[0].Direction = ParameterDirection.Output;
+            comm.Parameters.AddWithValue("@COURT_NAME", courtName);
+            comm.Parameters.AddWithValue("@LOCATION_ID", locationID);
+            comm.Parameters.AddWithValue("@COURT_TYPE_ID", courtTypeID);
+            comm.Parameters.AddWithValue("@BACKBOARD_TYPE_ID", backboardTypeID);
+            comm.Parameters.AddWithValue("@HAS_NET", hasNet);
+            comm.Parameters.AddWithValue("@HAS_SCOREBOARD", hasScoreboard);
+            comm.Parameters.AddWithValue("@CREATE_USER", createUser);
+
+            comm.ExecuteNonQuery();
+
+            return (int)comm.Parameters["@PKID"].Value;
         }
     }
 }

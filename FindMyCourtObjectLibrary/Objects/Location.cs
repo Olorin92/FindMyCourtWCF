@@ -14,7 +14,7 @@ namespace FindMyCourtObjectLibrary.Objects
         private string _name;
         private double _longitude;
         private double _latitude;
-        private int _userID;
+        private string _submittedUserName;
 
         public int PKID
         {
@@ -68,17 +68,22 @@ namespace FindMyCourtObjectLibrary.Objects
             }
         }
 
-        public int UserID
+        public string SubmittedUserName
         {
             get
             {
-                return _userID;
+                return _submittedUserName;
             }
             set
             {
-                _userID = value;
-                OnPropertyChanged("UserID");
+                _submittedUserName = value;
+                OnPropertyChanged("SubmittedUserName");
             }
+        }
+
+        public Location()
+        {
+            IsNew = true;
         }
 
         public static List<Location> GetLocations(double minLat, double maxLat, double minLon, double maxLon)
@@ -124,7 +129,7 @@ namespace FindMyCourtObjectLibrary.Objects
             _name = (string)dr["LOCATION_NAME"];
             _longitude = (double)dr["LONGITUDE"];
             _latitude = (double)dr["LATITUDE"];
-            _userID = (int)dr["CREATE_USER_ID"];
+            _submittedUserName = (string)dr["CREATE_USER_NAME"];
 
             IsDirty = false;
             IsNew = false;
@@ -134,7 +139,7 @@ namespace FindMyCourtObjectLibrary.Objects
         {
             using (LocationDAL dal = new LocationDAL("environmentName"))
             {
-                _pkid = dal.InsertLocation(_name, _longitude, _latitude, _userID);
+                _pkid = dal.InsertLocation(_name, _longitude, _latitude, _submittedUserName);
             }
         }
 

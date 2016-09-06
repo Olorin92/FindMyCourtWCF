@@ -26,5 +26,13 @@ namespace FindMyCourt.Rest_Implementation
 
             return new MemoryStream(Encoding.UTF8.GetBytes(serialization));
         }
+
+        public static int InsertCourt(string court)
+        {
+            Court newCourt = JsonConvert.DeserializeObject<Court>(court);
+            newCourt.Save();
+
+            return newCourt.PKID;
+        }
     }
 }
