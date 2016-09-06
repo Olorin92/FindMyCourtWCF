@@ -115,6 +115,11 @@ namespace FindMyCourtObjectLibrary.Objects
             }
         }
 
+        public Court()
+        {
+            IsNew = true;
+        }
+
         public static Court GetCourt(int pkid)
         {
             Court court = new Court();
@@ -157,8 +162,8 @@ namespace FindMyCourtObjectLibrary.Objects
             CourtName = (string)dr["COURT_NAME"];
             CourtTypeID = (int)dr["COURT_TYPE_ID"];
             BackboardTypeID = (int)dr["BACKBOARD_TYPE_ID"];
-            HasNet = Convert.ToBoolean((int)dr["HAS_NET"]);
-            HasScoreboard = Convert.ToBoolean((int)dr["HAS_SCOREBOARD"]);
+            HasNet = Convert.ToBoolean(dr["HAS_NET"]);
+            HasScoreboard = Convert.ToBoolean(dr["HAS_SCOREBOARD"]);
             SubmittedUserName = (string)dr["SUBMITTED_USER_NAME"];
 
             IsNew = false;

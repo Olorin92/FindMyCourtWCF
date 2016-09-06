@@ -90,18 +90,25 @@ namespace FindMyCourtObjectLibrary.Objects
         {
             List<Location> locations = new List<Location>();
 
-            using (LocationDAL dal = new LocationDAL("environmentName"))
+            try
             {
-                using (SqlDataReader dr = dal.GetLocations(minLat, maxLat, minLon, maxLon))
+                using (LocationDAL dal = new LocationDAL("environmentName"))
                 {
-                    while (dr.Read())
+                    using (SqlDataReader dr = dal.GetLocations(minLat, maxLat, minLon, maxLon))
                     {
-                        Location loc = new Location();
-                        loc.Fetch(dr);
+                        while (dr.Read())
+                        {
+                            Location loc = new Location();
+                            loc.Fetch(dr);
 
-                        locations.Add(loc);
+                            locations.Add(loc);
+                        }
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+
             }
 
             return locations;
