@@ -15,6 +15,7 @@ namespace FindMyCourtObjectLibrary.Objects
         private double _longitude;
         private double _latitude;
         private string _submittedUserName;
+        private List<Court> _courts;
 
         public int PKID
         {
@@ -78,6 +79,16 @@ namespace FindMyCourtObjectLibrary.Objects
             {
                 _submittedUserName = value;
                 OnPropertyChanged("SubmittedUserName");
+            }
+        }
+
+        public List<Court> Courts
+        {
+            get
+            {
+                if (_courts == null)
+                    _courts = Court.GetCourts(PKID);
+                return _courts;
             }
         }
 
