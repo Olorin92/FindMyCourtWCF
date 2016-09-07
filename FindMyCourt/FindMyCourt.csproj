@@ -107,6 +107,7 @@
     <Compile Include="IFindMyCourtService.cs" />
     <Compile Include="Rest Implementation\CourtRest.cs" />
     <Compile Include="Rest Implementation\LocationRest.cs" />
+    <Compile Include="Rest Implementation\ReviewRest.cs" />
     <Compile Include="Rest Implementation\UserRest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

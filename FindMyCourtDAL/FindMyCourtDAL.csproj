@@ -45,6 +45,7 @@
     <Compile Include="CourtDAL.cs" />
     <Compile Include="LocationDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReviewDAL.cs" />
     <Compile Include="UserDAL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

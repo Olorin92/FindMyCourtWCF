@@ -83,5 +83,27 @@ namespace FindMyCourt
         int InsertCourt(Stream court);
 
         #endregion
+
+        #region Review Methods
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Locations/{locationID}/Reviews",
+            Method = "GET")]
+        [return: MessageParameter(Name = "Reviews")]
+        Stream GetLocationReviews(string locationID);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Courts/{courtID}/Reviews",
+            Method = "GET")]
+        [return: MessageParameter(Name = "Reviews")]
+        Stream GetCourtReviews(string courtID);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Reviews",
+            Method = "POST")]
+        [return: MessageParameter(Name = "PKID")]
+        int InsertReview(Stream review);
+
+        #endregion
     }
 }

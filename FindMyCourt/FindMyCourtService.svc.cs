@@ -13,7 +13,7 @@ namespace FindMyCourt
 {
     public class FindMyCourtService : IFindMyCourtService
     {
-        
+
         public int CreateUser(Stream user)
         {
             using (StreamReader reader = new StreamReader(user))
@@ -78,6 +78,24 @@ namespace FindMyCourt
             using (StreamReader reader = new StreamReader(court))
             {
                 return CourtRest.InsertCourt(reader.ReadToEnd());
+            }
+        }
+
+        public Stream GetLocationReviews(string locationID)
+        {
+            return ReviewRest.GetLocationReviews(locationID);
+        }
+
+        public Stream GetCourtReviews(string courtID)
+        {
+            return ReviewRest.GetCourtReviews(courtID);
+        }
+
+        public int InsertReview(Stream review)
+        {
+            using (StreamReader reader = new StreamReader(review))
+            {
+                return ReviewRest.InsertReview(reader.ReadToEnd());
             }
         }
     }
