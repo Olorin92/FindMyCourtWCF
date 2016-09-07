@@ -106,6 +106,7 @@
     </Compile>
     <Compile Include="IFindMyCourtService.cs" />
     <Compile Include="Rest Implementation\CourtRest.cs" />
+    <Compile Include="Rest Implementation\EnumsRest.cs" />
     <Compile Include="Rest Implementation\LocationRest.cs" />
     <Compile Include="Rest Implementation\ReviewRest.cs" />
     <Compile Include="Rest Implementation\UserRest.cs" />
@@ -141,7 +142,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1405</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

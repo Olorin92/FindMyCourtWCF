@@ -83,11 +83,13 @@ namespace FindMyCourt
 
         public Stream GetLocationReviews(string locationID)
         {
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
             return ReviewRest.GetLocationReviews(locationID);
         }
 
         public Stream GetCourtReviews(string courtID)
         {
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
             return ReviewRest.GetCourtReviews(courtID);
         }
 
