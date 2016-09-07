@@ -61,6 +61,20 @@ namespace FindMyCourt
             return LocationRest.GetLocation(pkid);
         }
 
+        public Stream GetLocationContactDetails(string locationID)
+        {
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
+            return LocationContactDetailsRest.GetLocationContactDetails(locationID);
+        }
+
+        public int InsertLocationContactDetails(Stream locationContactDetails)
+        {
+            using (StreamReader reader = new StreamReader(locationContactDetails))
+            {
+                return LocationContactDetailsRest.InsertLocationContactDetails(reader.ReadToEnd());
+            }
+        }
+
         public Stream GetCourt(string id)
         {
             WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";

@@ -60,6 +60,18 @@ namespace FindMyCourt
             Method = "POST")]
         [return: MessageParameter(Name = "PKID")]
         int InsertLocation(Stream location);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Locations/{locationID}/ContactDetails",
+            Method = "GET")]
+        [return: MessageParameter(Name = "CpntactDetails")]
+        Stream GetLocationContactDetails(string locationID);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "ContactDetails",
+            Method = "POST")]
+        [return: MessageParameter(Name = "PKID")]
+        int InsertLocationContactDetails(Stream locationContactDetails);
         #endregion
 
         #region CourtMethods
