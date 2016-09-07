@@ -165,6 +165,7 @@ namespace FindMyCourtObjectLibrary.Objects
             HasNet = Convert.ToBoolean(dr["HAS_NET"]);
             HasScoreboard = Convert.ToBoolean(dr["HAS_SCOREBOARD"]);
             SubmittedUserName = (string)dr["SUBMITTED_USER_NAME"];
+            LocationID = (int)dr["LOCATION_ID"];
 
             IsNew = false;
             IsDirty = false;

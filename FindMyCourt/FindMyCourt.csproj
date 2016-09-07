@@ -106,7 +106,7 @@
     </Compile>
     <Compile Include="IFindMyCourtService.cs" />
     <Compile Include="Rest Implementation\CourtRest.cs" />
-    <Compile Include="Rest Implementation\LocationContactDetailsRest.cs" />
+    <Compile Include="Rest Implementation\EnumsRest.cs" />
     <Compile Include="Rest Implementation\LocationRest.cs" />
     <Compile Include="Rest Implementation\ReviewRest.cs" />
     <Compile Include="Rest Implementation\UserRest.cs" />
@@ -126,6 +126,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FindMyCourtDAL\FindMyCourtDAL.csproj">
+      <Project>{EED61BCE-E379-4E8C-81A2-5D206491C6DC}</Project>
+      <Name>FindMyCourtDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FindMyCourtObjectLibrary\FindMyCourtObjectLibrary.csproj">
       <Project>{950d84a3-1ce5-4173-b085-dc6a18da5a4f}</Project>
       <Name>FindMyCourtObjectLibrary</Name>
@@ -142,7 +146,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1405</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

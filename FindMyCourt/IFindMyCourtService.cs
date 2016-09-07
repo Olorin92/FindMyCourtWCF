@@ -117,5 +117,27 @@ namespace FindMyCourt
         int InsertReview(Stream review);
 
         #endregion
+
+        #region Enum Methods
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "CourtTypes",
+            Method = "GET")]
+        [return: MessageParameter(Name = "CourtTypes")]
+        Stream GetCourtTypes();
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "BackboardTypes",
+            Method = "GET")]
+        [return: MessageParameter(Name = "BackboardTypes")]
+        Stream GetBackboardTypes();
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "ReviewTypes",
+            Method = "GET")]
+        [return: MessageParameter(Name = "ReviewTypes")]
+        Stream GetReviewTypes();
+
+        #endregion
     }
 }

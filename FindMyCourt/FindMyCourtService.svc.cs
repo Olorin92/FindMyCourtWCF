@@ -97,11 +97,13 @@ namespace FindMyCourt
 
         public Stream GetLocationReviews(string locationID)
         {
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
             return ReviewRest.GetLocationReviews(locationID);
         }
 
         public Stream GetCourtReviews(string courtID)
         {
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
             return ReviewRest.GetCourtReviews(courtID);
         }
 
@@ -111,6 +113,24 @@ namespace FindMyCourt
             {
                 return ReviewRest.InsertReview(reader.ReadToEnd());
             }
+        }
+
+        public Stream GetCourtTypes()
+        {
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
+            return EnumsRest.GetCourtTypes();
+        }
+
+        public Stream GetBackboardTypes()
+        {
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
+            return EnumsRest.GetBackboardTypes();
+        }
+
+        public Stream GetReviewTypes()
+        {
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
+            return EnumsRest.GetReviewTypes();
         }
     }
 }
