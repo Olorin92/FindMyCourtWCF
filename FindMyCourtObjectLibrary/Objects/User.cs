@@ -1,4 +1,5 @@
 ﻿using FindMyCourtDAL;
+using FindMyCourtObjectLibrary.Common;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -138,7 +139,11 @@ namespace FindMyCourtObjectLibrary.Objects
             set
             {
                 _password = value;
-                GenerateSaltedPassword();
+
+                if (_salt == null)
+                    _salt = SaltedPasswordUtility.GenerateSalt();
+
+                _saltedPassword = SaltedPasswordUtility.GenerateSaltedPassword(_salt, _password);
             }
         }
 
@@ -240,36 +245,6 @@ namespace FindMyCourtObjectLibrary.Objects
         protected override void Update()
         {
 
-        }
-
-        private void GenerateSaltedPassword()
-        {
-            if (_salt == null)
-                _salt = SaltGenerator(new RNGCryptoServiceProvider(), 256);
-
-            byte[] hashBytes;
-
-            using (SHA256 hash = SHA256.Create())
-            {
-                hashBytes = hash.ComputeHash(Encoding.UTF8.GetBytes(_password + _salt));
-            }
-
-            // Use StringBuilder for performance
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < hashBytes.Length; i++)
-            {
-                sb.Append(hashBytes[i].ToString("x2"));
-            }
-
-            _saltedPassword = sb.ToString();
-        }
-
-        private string SaltGenerator(RNGCryptoServiceProvider crypto, int size)
-        {
-            byte[] bytes = new byte[size];
-            crypto.GetBytes(bytes);
-            return Convert.ToBase64String(bytes);
         }
     }
 }
