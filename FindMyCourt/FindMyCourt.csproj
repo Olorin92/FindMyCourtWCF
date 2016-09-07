@@ -126,6 +126,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FindMyCourtDAL\FindMyCourtDAL.csproj">
+      <Project>{EED61BCE-E379-4E8C-81A2-5D206491C6DC}</Project>
+      <Name>FindMyCourtDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FindMyCourtObjectLibrary\FindMyCourtObjectLibrary.csproj">
       <Project>{950d84a3-1ce5-4173-b085-dc6a18da5a4f}</Project>
       <Name>FindMyCourtObjectLibrary</Name>
