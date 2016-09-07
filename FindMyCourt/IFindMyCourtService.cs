@@ -68,7 +68,7 @@ namespace FindMyCourt
         Stream GetLocationContactDetails(string locationID);
 
         [OperationContract]
-        [WebInvoke(UriTemplate = "ContactDetails",
+        [WebInvoke(UriTemplate = "LocationContactDetails",
             Method = "POST")]
         [return: MessageParameter(Name = "PKID")]
         int InsertLocationContactDetails(Stream locationContactDetails);

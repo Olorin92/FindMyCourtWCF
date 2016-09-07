@@ -101,7 +101,10 @@ namespace FindMyCourtObjectLibrary.Objects
 
             }
 
-            return contactDetails;
+            if (contactDetails.PKID == 0)
+                return null;
+            else
+                return contactDetails;
         }
 
         private void Fetch(SqlDataReader dr)
