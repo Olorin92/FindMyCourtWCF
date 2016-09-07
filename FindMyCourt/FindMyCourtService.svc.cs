@@ -32,7 +32,7 @@ namespace FindMyCourt
         public Stream GetUsersFiltered(string email, string username)
         {
             WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
-            return UserRest.GetUser(email, username);
+            return UserRest.GetUsers(email, username);
         }
 
         //public Stream GetUsers()

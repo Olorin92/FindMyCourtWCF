@@ -36,7 +36,7 @@ namespace FindMyCourtDAL
             return comm.ExecuteReader();
         }
 
-        public SqlDataReader GetUser(string email, string username)
+        public SqlDataReader GetUsers(string email, string username)
         {
             SqlCommand comm = Connection.CreateCommand();
             comm.CommandType = System.Data.CommandType.StoredProcedure;

@@ -24,8 +24,8 @@ namespace FindMyCourtDAL
 
             comm.Parameters.AddWithValue("@LAT_MIN", minLat);
             comm.Parameters.AddWithValue("@LAT_MAX", maxLat);
-            comm.Parameters.AddWithValue("@LONG_MIN", minLon);
-            comm.Parameters.AddWithValue("@LONG_MAX", maxLon);
+            comm.Parameters.AddWithValue("@LON_MIN", minLon);
+            comm.Parameters.AddWithValue("@LON_MAX", maxLon);
 
             return comm.ExecuteReader();
         }

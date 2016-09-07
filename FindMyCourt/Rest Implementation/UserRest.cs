@@ -26,10 +26,10 @@ namespace FindMyCourt.Rest_Implementation
             return new MemoryStream(Encoding.UTF8.GetBytes(serialization));
         }
 
-        public static Stream GetUser(string email, string username)
+        public static Stream GetUsers(string email, string username)
         {
-            User user = User.GetUser(email, username);
-            string serialization = JsonConvert.SerializeObject(user);
+            List<User> users = User.GetUsers(email, username);
+            string serialization = JsonConvert.SerializeObject(users);
             return new MemoryStream(Encoding.UTF8.GetBytes(serialization));
         }
 
