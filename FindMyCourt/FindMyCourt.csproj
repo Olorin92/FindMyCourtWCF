@@ -89,7 +89,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\FMCAuthorizationManager.cs" />
-    <Compile Include="Authentication\TokenHandler.cs" />
     <Compile Include="FindMyCourtService.svc.cs">
       <DependentUpon>FindMyCourtService.svc</DependentUpon>
     </Compile>

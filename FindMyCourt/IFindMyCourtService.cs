@@ -139,5 +139,14 @@ namespace FindMyCourt
         Stream GetReviewTypes();
 
         #endregion
+
+        #region Auth Methods
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Login",
+            Method = "GET")]
+        Stream Login();
+
+        #endregion
     }
 }

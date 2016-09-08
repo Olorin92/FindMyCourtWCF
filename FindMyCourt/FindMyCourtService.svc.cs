@@ -1,4 +1,6 @@
 ﻿using FindMyCourt.Rest_Implementation;
+using FindMyCourtObjectLibrary.Common;
+using FindMyCourtObjectLibrary.Objects;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -131,6 +133,31 @@ namespace FindMyCourt
         {
             WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
             return EnumsRest.GetReviewTypes();
+        }
+
+        public Stream Login()
+        {
+            string username = WebOperationContext.Current.IncomingRequest.Headers["username"];
+            string password = WebOperationContext.Current.IncomingRequest.Headers["password"];
+
+            if ((username == null || username == string.Empty) || (password == null || password == string.Empty))
+            {
+                throw new WebException("You must provide both a username and a password to login");
+            }
+            else
+            {
+                User user = User.GetUsers(null, username)[0];
+                string saltedPassword = SaltedPasswordUtility.GenerateSaltedPassword(user.Salt, password);
+
+                if (saltedPassword == user.SaltedPassword)
+                {
+                    return UserRest.GetUser(user.PKID.ToString());
+                }
+                else
+                {
+                    throw new WebException("Invalid credentials");
+                }
+            }
         }
     }
 }
