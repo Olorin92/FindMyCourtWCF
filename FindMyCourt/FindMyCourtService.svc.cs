@@ -43,10 +43,10 @@ namespace FindMyCourt
         //    return UserRest.GetUsers();
         //}
 
-        public Stream GetLocations(string minLat, string maxLat, string minLon, string maxLon, string isLightWeight)
+        public Stream GetLocations(string minLat, string maxLat, string minLon, string maxLon, string isLightWeight, string onlyIndoor, string onlyOutdoor)
         {
             WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
-            return LocationRest.GetLocations(minLat, maxLat, minLon, maxLon, isLightWeight);
+            return LocationRest.GetLocations(minLat, maxLat, minLon, maxLon, isLightWeight, onlyIndoor, onlyOutdoor);
         }
 
         public int InsertLocation(Stream location)

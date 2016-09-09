@@ -20,12 +20,14 @@ namespace FindMyCourt.Rest_Implementation
             return new MemoryStream(Encoding.UTF8.GetBytes(serialization));
         }
 
-        public static Stream GetLocations(string minLat, string maxLat, string minLon, string maxLon, string isLightWeight)
+        public static Stream GetLocations(string minLat, string maxLat, string minLon, string maxLon, string isLightWeight, string onlyIndoor, string onlyOutdoor)
         {
             List<Location> locations = Location.GetLocations(minLat == null ? (double?)null : Convert.ToDouble(minLat), 
                                                              maxLat == null ? (double?)null : Convert.ToDouble(maxLat), 
                                                              minLon == null ? (double?)null : Convert.ToDouble(minLon), 
-                                                             maxLon == null ? (double?)null : Convert.ToDouble(maxLon));
+                                                             maxLon == null ? (double?)null : Convert.ToDouble(maxLon),
+                                                             onlyIndoor == null ? false : Convert.ToBoolean(onlyIndoor),
+                                                             onlyOutdoor == null ? false : Convert.ToBoolean(onlyOutdoor));
             string serialization = string.Empty;
 
             if (isLightWeight != null && Convert.ToBoolean(isLightWeight) == true)

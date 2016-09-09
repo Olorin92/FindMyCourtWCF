@@ -140,7 +140,7 @@ namespace FindMyCourtObjectLibrary.Objects
             IsNew = true;
         }
 
-        public static List<Location> GetLocations(double? minLat, double? maxLat, double? minLon, double? maxLon)
+        public static List<Location> GetLocations(double? minLat, double? maxLat, double? minLon, double? maxLon, bool onlyIndoor, bool onlyOutdoor)
         {
             List<Location> locations = new List<Location>();
 
@@ -148,7 +148,7 @@ namespace FindMyCourtObjectLibrary.Objects
             {
                 using (LocationDAL dal = new LocationDAL("environmentName"))
                 {
-                    using (SqlDataReader dr = dal.GetLocations(minLat, maxLat, minLon, maxLon))
+                    using (SqlDataReader dr = dal.GetLocations(minLat, maxLat, minLon, maxLon, onlyIndoor, onlyOutdoor))
                     {
                         while (dr.Read())
                         {

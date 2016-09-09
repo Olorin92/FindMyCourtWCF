@@ -90,7 +90,7 @@ namespace FindMyCourtObjectLibrary.Objects
             }
         }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public string Salt
         {
             get
@@ -104,7 +104,7 @@ namespace FindMyCourtObjectLibrary.Objects
             //}
         }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public string SaltedPassword
         {
             get

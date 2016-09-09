@@ -16,7 +16,7 @@ namespace FindMyCourtDAL
 
         }
 
-        public SqlDataReader GetLocations(double? minLat, double? maxLat, double? minLon, double? maxLon)
+        public SqlDataReader GetLocations(double? minLat, double? maxLat, double? minLon, double? maxLon, bool onlyIndoor, bool onlyOutdoor)
         {
             SqlCommand comm = Connection.CreateCommand();
             comm.CommandText = "usp_GetLocations";
@@ -26,6 +26,8 @@ namespace FindMyCourtDAL
             comm.Parameters.AddWithValue("@LAT_MAX", maxLat);
             comm.Parameters.AddWithValue("@LON_MIN", minLon);
             comm.Parameters.AddWithValue("@LON_MAX", maxLon);
+            comm.Parameters.AddWithValue("@ONLY_INDOOR", onlyIndoor);
+            comm.Parameters.AddWithValue("@ONLY_OUTDOOR", onlyOutdoor);
 
             return comm.ExecuteReader();
         }

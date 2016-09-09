@@ -18,6 +18,7 @@ namespace FindMyCourtObjectLibrary.Objects
         private bool _hasNet;
         private bool _hasScoreboard;
         private string _submittedUserName;
+        private bool _isIndoor;
 
         public int PKID
         {
@@ -115,6 +116,19 @@ namespace FindMyCourtObjectLibrary.Objects
             }
         }
 
+        public bool IsIndoor
+        {
+            get
+            {
+                return _isIndoor;
+            }
+            set
+            {
+                _isIndoor = value;
+                OnPropertyChanged("IsIndoor");
+            }
+        }
+
         public Court()
         {
             IsNew = true;
@@ -166,6 +180,7 @@ namespace FindMyCourtObjectLibrary.Objects
             HasScoreboard = Convert.ToBoolean(dr["HAS_SCOREBOARD"]);
             SubmittedUserName = (string)dr["SUBMITTED_USER_NAME"];
             LocationID = (int)dr["LOCATION_ID"];
+            IsIndoor = (bool)dr["IS_INDOOR"];
 
             IsNew = false;
             IsDirty = false;
