@@ -1,4 +1,5 @@
 ﻿using FindMyCourtDAL;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -16,6 +17,7 @@ namespace FindMyCourtObjectLibrary.Objects
         private double _latitude;
         private string _submittedUserName;
         private List<Court> _courts;
+        private List<Review> _reviews;
 
         public int PKID
         {
@@ -92,12 +94,53 @@ namespace FindMyCourtObjectLibrary.Objects
             }
         }
 
+        [JsonIgnore]
+        public List<Review> Reviews
+        {
+            get
+            {
+                if (_reviews == null)
+                    _reviews = Review.GetLocationReviews(PKID);
+
+                return _reviews;
+            }
+        }
+
+        public double? AverageReviewScore
+        {
+            get
+            {
+                double? reviewAverage = null;
+                int reviewTotal = 0;
+
+                if (Reviews.Count > 0)
+                {
+                    foreach (Review review in Reviews)
+                    {
+                        reviewTotal += review.ReviewRating;
+                    }
+
+                    reviewAverage = reviewTotal / Reviews.Count;
+                }
+
+                return reviewAverage;
+            }
+        }
+
+        public int NumberOfCourts
+        {
+            get
+            {
+                return Courts.Count;
+            }
+        }
+
         public Location()
         {
             IsNew = true;
         }
 
-        public static List<Location> GetLocations(double minLat, double maxLat, double minLon, double maxLon)
+        public static List<Location> GetLocations(double? minLat, double? maxLat, double? minLon, double? maxLon)
         {
             List<Location> locations = new List<Location>();
 

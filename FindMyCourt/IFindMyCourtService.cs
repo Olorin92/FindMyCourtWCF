@@ -50,10 +50,10 @@ namespace FindMyCourt
         Stream GetLocation(string locationID);
 
         [OperationContract]
-        [WebInvoke(UriTemplate = "Locations?minLat={minLat}&maxLat={maxLat}&minLon={minLon}&maxLon={maxLon}",
+        [WebInvoke(UriTemplate = "Locations?minLat={minLat}&maxLat={maxLat}&minLon={minLon}&maxLon={maxLon}&isLightweight={isLightweight}",
            Method = "GET")]
         [return: MessageParameter(Name = "Locations")]
-        Stream GetLocations(string minLat, string maxLat, string minLon, string maxLon);
+        Stream GetLocations(string minLat, string maxLat, string minLon, string maxLon, string isLightWeight);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Locations",

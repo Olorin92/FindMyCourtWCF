@@ -1,5 +1,6 @@
 ﻿using FindMyCourtDAL;
 using FindMyCourtObjectLibrary.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -89,30 +90,32 @@ namespace FindMyCourtObjectLibrary.Objects
             }
         }
 
+        [JsonIgnore]
         public string Salt
         {
             get
             {
                 return _salt;
             }
-            set
-            {
-                _salt = value;
-                OnPropertyChanged("Salt");
-            }
+            //set
+            //{
+            //    _salt = value;
+            //    OnPropertyChanged("Salt");
+            //}
         }
 
+        [JsonIgnore]
         public string SaltedPassword
         {
             get
             {
                 return _saltedPassword;
             }
-            set
-            {
-                _saltedPassword = value;
-                OnPropertyChanged("SaltedPassword");
-            }
+            //set
+            //{
+            //    _saltedPassword = value;
+            //    OnPropertyChanged("SaltedPassword");
+            //}
         }
 
         public int? HomeLocationID

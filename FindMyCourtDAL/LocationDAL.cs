@@ -16,7 +16,7 @@ namespace FindMyCourtDAL
 
         }
 
-        public SqlDataReader GetLocations(double minLat, double maxLat, double minLon, double maxLon)
+        public SqlDataReader GetLocations(double? minLat, double? maxLat, double? minLon, double? maxLon)
         {
             SqlCommand comm = Connection.CreateCommand();
             comm.CommandText = "usp_GetLocations";

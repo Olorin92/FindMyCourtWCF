@@ -1,5 +1,6 @@
 ﻿using FindMyCourtObjectLibrary.Objects;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,10 +20,36 @@ namespace FindMyCourt.Rest_Implementation
             return new MemoryStream(Encoding.UTF8.GetBytes(serialization));
         }
 
-        public static Stream GetLocations(string minLat, string maxLat, string minLon, string maxLon)
+        public static Stream GetLocations(string minLat, string maxLat, string minLon, string maxLon, string isLightWeight)
         {
-            List<Location> locations = Location.GetLocations(Convert.ToDouble(minLat), Convert.ToDouble(maxLat), Convert.ToDouble(minLon), Convert.ToDouble(maxLon));
-            string serialization = JsonConvert.SerializeObject(locations);
+            List<Location> locations = Location.GetLocations(minLat == null ? (double?)null : Convert.ToDouble(minLat), 
+                                                             maxLat == null ? (double?)null : Convert.ToDouble(maxLat), 
+                                                             minLon == null ? (double?)null : Convert.ToDouble(minLon), 
+                                                             maxLon == null ? (double?)null : Convert.ToDouble(maxLon));
+            string serialization = string.Empty;
+
+            if (isLightWeight != null && Convert.ToBoolean(isLightWeight) == true)
+            {
+                JArray minifiedLocations = new JArray();
+
+                foreach (Location loc in locations)
+                {
+
+                    JObject locJson = new JObject();
+                    locJson.Add(nameof(loc.PKID), loc.PKID);
+                    locJson.Add(nameof(loc.Name), loc.Name);
+                    locJson.Add(nameof(loc.AverageReviewScore), loc.AverageReviewScore);
+                    locJson.Add(nameof(loc.NumberOfCourts), loc.NumberOfCourts);
+
+                    minifiedLocations.Add(locJson);
+                }
+
+                serialization = JsonConvert.SerializeObject(minifiedLocations);
+            }
+            else
+            {
+                serialization = JsonConvert.SerializeObject(locations);
+            }
 
             return new MemoryStream(Encoding.UTF8.GetBytes(serialization));
         }

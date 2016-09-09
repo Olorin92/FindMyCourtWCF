@@ -36,6 +36,7 @@ namespace FindMyCourtObjectLibrary.Common
 
             byte[] bytes = new byte[size];
             crypto.GetBytes(bytes);
+
             return Convert.ToBase64String(bytes);
         }
     }
