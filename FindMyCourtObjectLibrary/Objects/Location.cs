@@ -135,6 +135,34 @@ namespace FindMyCourtObjectLibrary.Objects
             }
         }
 
+        public bool HasIndoor
+        {
+            get
+            {
+                foreach(Court court in Courts)
+                {
+                    if (court.IsIndoor)
+                        return true;
+                }
+
+                return false;
+            }
+        }
+
+        public bool HasOutdoor
+        {
+            get
+            {
+                foreach(Court court in Courts)
+                {
+                    if (!court.IsIndoor)
+                        return true;
+                }
+
+                return false;
+            }
+        }
+
         public Location()
         {
             IsNew = true;
