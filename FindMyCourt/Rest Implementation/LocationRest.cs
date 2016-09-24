@@ -44,6 +44,8 @@ namespace FindMyCourt.Rest_Implementation
                     locJson.Add(nameof(loc.NumberOfCourts), loc.NumberOfCourts);
                     locJson.Add(nameof(loc.HasIndoor), loc.HasIndoor);
                     locJson.Add(nameof(loc.HasOutdoor), loc.HasOutdoor);
+                    locJson.Add(nameof(loc.Latitude), loc.Latitude);
+                    locJson.Add(nameof(loc.Longitude), loc.Longitude);
 
                     minifiedLocations.Add(locJson);
                 }
