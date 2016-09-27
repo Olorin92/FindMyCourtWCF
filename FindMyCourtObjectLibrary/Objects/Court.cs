@@ -196,7 +196,10 @@ namespace FindMyCourtObjectLibrary.Objects
 
         protected override void Update()
         {
-            throw new NotImplementedException();
+            using (CourtDAL dal = new CourtDAL("environment"))
+            {
+                dal.UpdateCourt(_pkid, _courtName, _locationID, _courtTypeID, _backboardTypeID, _hasNet, _hasScoreboard);
+            }
         }
     }
 }

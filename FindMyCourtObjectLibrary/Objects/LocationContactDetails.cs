@@ -126,7 +126,10 @@ namespace FindMyCourtObjectLibrary.Objects
 
         protected override void Update()
         {
-            throw new NotImplementedException();
+            using (LocationContactDetailsDAL dal = new LocationContactDetailsDAL("environment"))
+            {
+                dal.UpdateLocationContactDetails(_pkid, _contactName, _mobile, _phone, _website);
+            }
         }
     }
 }

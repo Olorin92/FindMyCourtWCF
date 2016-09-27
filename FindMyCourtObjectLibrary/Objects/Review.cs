@@ -175,7 +175,10 @@ namespace FindMyCourtObjectLibrary.Objects
 
         protected override void Update()
         {
-            throw new NotImplementedException();
+            using (ReviewDAL dal = new ReviewDAL("environment"))
+            {
+                dal.UpdateReview(_pkid, _reviewTypeID, _reviewEntityID, _reviewComment, _reviewRating);
+            }
         }
     }
 }

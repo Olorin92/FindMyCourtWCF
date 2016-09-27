@@ -247,7 +247,10 @@ namespace FindMyCourtObjectLibrary.Objects
 
         protected override void Update()
         {
-
+            using (UserDAL dal = new UserDAL("environment"))
+            {
+                dal.UpdateUser(_pkid, _firstName, _lastName, _userName, _emailAddress, _salt, _saltedPassword);
+            }
         }
     }
 }

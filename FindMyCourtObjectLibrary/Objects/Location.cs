@@ -234,7 +234,10 @@ namespace FindMyCourtObjectLibrary.Objects
 
         protected override void Update()
         {
-            throw new NotImplementedException();
+            using (LocationDAL dal = new LocationDAL("environmentName"))
+            {
+                dal.UpdateLocation(_pkid, _name, _longitude, _latitude);
+            }
         }
     }
 }
