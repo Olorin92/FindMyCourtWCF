@@ -161,48 +161,33 @@ namespace FindMyCourt
         }
 
         [return: MessageParameter(Name = "PKID")]
-        public int UpdateUser(string pkid, Stream user)
+        public int UpdateUser(string pkid, User user)
         {
-            using (StreamReader reader = new StreamReader(user))
-            {
-                return UserRest.UpdateUser(pkid, reader.ReadToEnd());
-            }
+            return UserRest.UpdateUser(pkid, user);
         }
 
         [return: MessageParameter(Name = "PKID")]
-        public int UpdateLocation(string pkid, Stream location)
+        public int UpdateLocation(string pkid, Location location)
         {
-            using (StreamReader reader = new StreamReader(location))
-            {
-                return LocationRest.UpdateLocation(pkid, reader.ReadToEnd());
-            }
+            return LocationRest.UpdateLocation(pkid, location);
         }
 
         [return: MessageParameter(Name = "PKID")]
-        public int UpdateLocationContactDetails(string pkid, Stream locationContactDetails)
+        public int UpdateLocationContactDetails(string pkid, LocationContactDetails locationContactDetails)
         {
-            using (StreamReader reader = new StreamReader(locationContactDetails))
-            {
-                return LocationContactDetailsRest.UpdateLocationContactDetails(pkid, reader.ReadToEnd());
-            }
+            return LocationContactDetailsRest.UpdateLocationContactDetails(pkid, locationContactDetails);
         }
 
         [return: MessageParameter(Name = "PKID")]
-        public int UpdateCourt(string pkid, Stream court)
+        public int UpdateCourt(string pkid, Court court)
         {
-            using (StreamReader reader = new StreamReader(court))
-            {
-                return CourtRest.UpdateCourt(pkid, reader.ReadToEnd());
-            }
+            return CourtRest.UpdateCourt(pkid, court);
         }
 
         [return: MessageParameter(Name = "PKID")]
-        public int UpdateReview(string pkid, Stream review)
+        public int UpdateReview(string pkid, Review review)
         {
-            using (StreamReader reader = new StreamReader(review))
-            {
-                return ReviewRest.UpdateReview(pkid, reader.ReadToEnd());
-            }
+            return ReviewRest.UpdateReview(pkid, review);
         }
     }
 }

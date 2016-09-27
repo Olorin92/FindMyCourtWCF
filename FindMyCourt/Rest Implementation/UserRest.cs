@@ -19,10 +19,10 @@ namespace FindMyCourt.Rest_Implementation
             return newUser.PKID;
         }
 
-        public static int UpdateUser(string pkid, string user)
+        public static int UpdateUser(string pkid, User user)
         {
             User existingUser = User.GetUser(Convert.ToInt32(pkid));
-            JsonConvert.PopulateObject(user, existingUser);
+            JsonConvert.PopulateObject(JsonConvert.SerializeObject(user), existingUser);
             existingUser.Save();
 
             return existingUser.PKID;

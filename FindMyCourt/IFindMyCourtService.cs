@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FindMyCourtObjectLibrary.Objects;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace FindMyCourt
         [WebInvoke(UriTemplate = "Users/{pkid}",
             Method = "PUT")]
         [return: MessageParameter(Name = "PKID")]
-        int UpdateUser(string pkid, Stream user);
+        int UpdateUser(string pkid, User user);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Users/{pkid}",
@@ -71,7 +72,7 @@ namespace FindMyCourt
         [WebInvoke(UriTemplate = "Locations/{pkid}",
             Method = "PUT")]
         [return: MessageParameter(Name = "PKID")]
-        int UpdateLocation(string pkid, Stream location);
+        int UpdateLocation(string pkid, Location location);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Locations/{locationID}/ContactDetails",
@@ -89,7 +90,7 @@ namespace FindMyCourt
         [WebInvoke(UriTemplate = "LocationContactDetails/{pkid}",
             Method = "PUT")]
         [return: MessageParameter(Name = "PKID")]
-        int UpdateLocationContactDetails(string pkid, Stream locationContactDetails);
+        int UpdateLocationContactDetails(string pkid, LocationContactDetails locationContactDetails);
         #endregion
 
         #region CourtMethods
@@ -116,7 +117,7 @@ namespace FindMyCourt
         [WebInvoke(UriTemplate = "Courts/{pkid}",
             Method = "PUT")]
         [return: MessageParameter(Name = "PKID")]
-        int UpdateCourt(string pkid, Stream court);
+        int UpdateCourt(string pkid, Court court);
 
         #endregion
 
@@ -144,7 +145,7 @@ namespace FindMyCourt
         [WebInvoke(UriTemplate = "Reviews/{pkid}",
             Method = "PUT")]
         [return: MessageParameter(Name = "PKID")]
-        int UpdateReview(string pkid, Stream review);
+        int UpdateReview(string pkid, Review review);
 
         #endregion
 

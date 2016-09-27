@@ -35,10 +35,10 @@ namespace FindMyCourt.Rest_Implementation
             return newReview.PKID;
         }
 
-        public static int UpdateReview(string pkid, string review)
+        public static int UpdateReview(string pkid, Review review)
         {
             Review existingReview = Review.GetReview(Convert.ToInt32(pkid));
-            JsonConvert.PopulateObject(review, existingReview);
+            JsonConvert.PopulateObject(JsonConvert.SerializeObject(review), existingReview);
             existingReview.Save();
 
             return existingReview.PKID;
