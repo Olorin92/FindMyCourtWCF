@@ -58,5 +58,24 @@ namespace FindMyCourtDAL
 
             return (int)comm.Parameters["@PKID"].Value;
         }
+
+        public void UpdateReview(int pkid,
+                                 int reviewTypeID,
+                                 int reviewEntityID,
+                                 string reviewComment,
+                                 byte reviewRating)
+        {
+            SqlCommand comm = Connection.CreateCommand();
+            comm.CommandType = System.Data.CommandType.StoredProcedure;
+            comm.CommandText = "usp_InsertReview";
+
+            comm.Parameters.AddWithValue("@PKID", pkid);
+            comm.Parameters.AddWithValue("@REVIEW_TYPE_ID", reviewTypeID);
+            comm.Parameters.AddWithValue("@REVIEW_ENTITY_ID", reviewEntityID);
+            comm.Parameters.AddWithValue("@REVIEW_COMMENT", reviewComment);
+            comm.Parameters.AddWithValue("@REVIEW_RATING", reviewRating);
+
+            comm.ExecuteNonQuery();
+        }
     }
 }
