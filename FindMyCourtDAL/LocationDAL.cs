@@ -63,5 +63,22 @@ namespace FindMyCourtDAL
 
             return (int)comm.Parameters[0].Value;
         }
+
+        public void UpdateLocation(int pkid,
+                                   string name,
+                                   double longitude,
+                                   double latitude)
+        {
+            SqlCommand comm = Connection.CreateCommand();
+            comm.CommandText = "usp_UpdateLocation";
+            comm.CommandType = System.Data.CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@PKID", pkid);
+            comm.Parameters.AddWithValue("@LOCATION_NAME", name);
+            comm.Parameters.AddWithValue("@LONGITUDE", longitude);
+            comm.Parameters.AddWithValue("@LATITUDE", latitude);
+
+            comm.ExecuteNonQuery();
+        }
     }
 }

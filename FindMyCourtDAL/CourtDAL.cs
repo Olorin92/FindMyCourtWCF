@@ -63,5 +63,28 @@ namespace FindMyCourtDAL
 
             return (int)comm.Parameters["@PKID"].Value;
         }
+
+        public void UpdateCourt(int pkid,
+                                string courtName,
+                                int locationID,
+                                int courtTypeID,
+                                int backboardTypeID,
+                                bool hasNet,
+                                bool hasScoreboard)
+        {
+            SqlCommand comm = Connection.CreateCommand();
+            comm.CommandType = System.Data.CommandType.StoredProcedure;
+            comm.CommandText = "usp_UpdateCourt";
+
+            comm.Parameters.AddWithValue("@PKID", pkid);
+            comm.Parameters.AddWithValue("@COURT_NAME", courtName);
+            comm.Parameters.AddWithValue("@LOCATION_ID", locationID);
+            comm.Parameters.AddWithValue("@COURT_TYPE_ID", courtTypeID);
+            comm.Parameters.AddWithValue("@BACKBOARD_TYPE_ID", backboardTypeID);
+            comm.Parameters.AddWithValue("@HAS_NET", hasNet);
+            comm.Parameters.AddWithValue("@HAS_SCOREBOARD", hasScoreboard);
+
+            comm.ExecuteNonQuery();
+        }
     }
 }
