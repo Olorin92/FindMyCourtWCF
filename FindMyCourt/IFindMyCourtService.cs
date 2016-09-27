@@ -23,6 +23,12 @@ namespace FindMyCourt
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Users/{pkid}",
+            Method = "PUT")]
+        [return: MessageParameter(Name = "PKID")]
+        int UpdateUser(string pkid, Stream user);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Users/{pkid}",
             Method = "GET")]
         [return: MessageParameter(Name = "User")]
         Stream GetUser(string pkid);
@@ -62,6 +68,12 @@ namespace FindMyCourt
         int InsertLocation(Stream location);
 
         [OperationContract]
+        [WebInvoke(UriTemplate = "Locations/{pkid}",
+            Method = "PUT")]
+        [return: MessageParameter(Name = "PKID")]
+        int UpdateLocation(string pkid, Stream location);
+
+        [OperationContract]
         [WebInvoke(UriTemplate = "Locations/{locationID}/ContactDetails",
             Method = "GET")]
         [return: MessageParameter(Name = "CpntactDetails")]
@@ -72,6 +84,12 @@ namespace FindMyCourt
             Method = "POST")]
         [return: MessageParameter(Name = "PKID")]
         int InsertLocationContactDetails(Stream locationContactDetails);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "LocationContactDetails/{pkid}",
+            Method = "PUT")]
+        [return: MessageParameter(Name = "PKID")]
+        int UpdateLocationContactDetails(string pkid, Stream locationContactDetails);
         #endregion
 
         #region CourtMethods
@@ -91,8 +109,14 @@ namespace FindMyCourt
         [OperationContract]
         [WebInvoke(UriTemplate = "Courts",
             Method = "POST")]
-        [return: MessageParameter(Name = "Court")]
+        [return: MessageParameter(Name = "PKID")]
         int InsertCourt(Stream court);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Courts/{pkid}",
+            Method = "PUT")]
+        [return: MessageParameter(Name = "PKID")]
+        int UpdateCourt(string pkid, Stream court);
 
         #endregion
 
@@ -115,6 +139,12 @@ namespace FindMyCourt
             Method = "POST")]
         [return: MessageParameter(Name = "PKID")]
         int InsertReview(Stream review);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Reviews/{pkid}",
+            Method = "PUT")]
+        [return: MessageParameter(Name = "PKID")]
+        int UpdateReview(string pkid, Stream review);
 
         #endregion
 

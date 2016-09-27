@@ -14,6 +14,17 @@ namespace FindMyCourtDAL
         {
         }
 
+        public SqlDataReader GetReview(int reviewID)
+        {
+            SqlCommand comm = Connection.CreateCommand();
+            comm.CommandType = System.Data.CommandType.StoredProcedure;
+            comm.CommandText = "usp_GetCourtReview";
+
+            comm.Parameters.AddWithValue("@REVIEW_ID", reviewID);
+
+            return comm.ExecuteReader();
+        }
+
         public SqlDataReader GetCourtReviews(int courtID)
         {
             SqlCommand comm = Connection.CreateCommand();

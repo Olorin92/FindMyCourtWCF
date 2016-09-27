@@ -26,5 +26,14 @@ namespace FindMyCourt.Rest_Implementation
 
             return newContactDetails.PKID;
         }
+
+        public static int UpdateLocationContactDetails(string pkid, string contactDetails)
+        {
+            LocationContactDetails existingContactDetails = LocationContactDetails.GetLocationContactDetails(Convert.ToInt32(pkid));
+            JsonConvert.PopulateObject(contactDetails, existingContactDetails);
+            existingContactDetails.Save();
+
+            return existingContactDetails.PKID;
+        }
     }
 }

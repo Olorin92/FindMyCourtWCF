@@ -67,5 +67,14 @@ namespace FindMyCourt.Rest_Implementation
 
             return newLocation.PKID;
         }
+
+        public static int UpdateLocation(string pkid, string location)
+        {
+            Location existingLocation = Location.GetLocation(Convert.ToInt32(pkid));
+            JsonConvert.PopulateObject(location, existingLocation);
+            existingLocation.Save();
+
+            return existingLocation.PKID;
+        }
     }
 }

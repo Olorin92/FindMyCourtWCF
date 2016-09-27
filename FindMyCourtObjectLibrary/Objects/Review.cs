@@ -95,6 +95,29 @@ namespace FindMyCourtObjectLibrary.Objects
             IsNew = true;
         }
 
+        public static Review GetReview(int pkid)
+        {
+            try
+            {
+                using (ReviewDAL dal = new ReviewDAL("environment"))
+                {
+                    using (SqlDataReader dr = dal.GetReview(pkid))
+                    {
+                        dr.Read();
+
+                        Review review = new Review();
+                        review.Fetch(dr);
+
+                        return review;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public static List<Review> GetCourtReviews(int courtID)
         {
             List<Review> courtReviews = new List<Review>();

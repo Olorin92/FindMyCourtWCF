@@ -159,5 +159,50 @@ namespace FindMyCourt
                 }
             }
         }
+
+        [return: MessageParameter(Name = "PKID")]
+        public int UpdateUser(string pkid, Stream user)
+        {
+            using (StreamReader reader = new StreamReader(user))
+            {
+                return UserRest.UpdateUser(pkid, reader.ReadToEnd());
+            }
+        }
+
+        [return: MessageParameter(Name = "PKID")]
+        public int UpdateLocation(string pkid, Stream location)
+        {
+            using (StreamReader reader = new StreamReader(location))
+            {
+                return LocationRest.UpdateLocation(pkid, reader.ReadToEnd());
+            }
+        }
+
+        [return: MessageParameter(Name = "PKID")]
+        public int UpdateLocationContactDetails(string pkid, Stream locationContactDetails)
+        {
+            using (StreamReader reader = new StreamReader(locationContactDetails))
+            {
+                return LocationContactDetailsRest.UpdateLocationContactDetails(pkid, reader.ReadToEnd());
+            }
+        }
+
+        [return: MessageParameter(Name = "PKID")]
+        public int UpdateCourt(string pkid, Stream court)
+        {
+            using (StreamReader reader = new StreamReader(court))
+            {
+                return CourtRest.UpdateCourt(pkid, reader.ReadToEnd());
+            }
+        }
+
+        [return: MessageParameter(Name = "PKID")]
+        public int UpdateReview(string pkid, Stream review)
+        {
+            using (StreamReader reader = new StreamReader(review))
+            {
+                return ReviewRest.UpdateReview(pkid, reader.ReadToEnd());
+            }
+        }
     }
 }

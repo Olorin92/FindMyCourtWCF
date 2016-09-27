@@ -34,5 +34,14 @@ namespace FindMyCourt.Rest_Implementation
 
             return newCourt.PKID;
         }
+
+        public static int UpdateCourt(string pkid, string court)
+        {
+            Court existingCourt = Court.GetCourt(Convert.ToInt32(pkid));
+            JsonConvert.PopulateObject(court, existingCourt);
+            existingCourt.Save();
+
+            return existingCourt.PKID;
+        }
     }
 }

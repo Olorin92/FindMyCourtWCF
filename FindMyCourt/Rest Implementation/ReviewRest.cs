@@ -34,5 +34,14 @@ namespace FindMyCourt.Rest_Implementation
 
             return newReview.PKID;
         }
+
+        public static int UpdateReview(string pkid, string review)
+        {
+            Review existingReview = Review.GetReview(Convert.ToInt32(pkid));
+            JsonConvert.PopulateObject(review, existingReview);
+            existingReview.Save();
+
+            return existingReview.PKID;
+        }
     }
 }
