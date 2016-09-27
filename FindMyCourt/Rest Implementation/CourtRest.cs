@@ -1,4 +1,5 @@
 ﻿using FindMyCourtObjectLibrary.Objects;
+using FindMyCourtObjectLibrary.Proxy_Objects;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace FindMyCourt.Rest_Implementation
             return newCourt.PKID;
         }
 
-        public static int UpdateCourt(string pkid, Court court)
+        public static int UpdateCourt(string pkid, ProxyCourt court)
         {
             Court existingCourt = Court.GetCourt(Convert.ToInt32(pkid));
             JsonConvert.PopulateObject(JsonConvert.SerializeObject(court), existingCourt);

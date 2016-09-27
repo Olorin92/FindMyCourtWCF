@@ -1,4 +1,5 @@
 ﻿using FindMyCourtObjectLibrary.Objects;
+using FindMyCourtObjectLibrary.Proxy_Objects;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace FindMyCourt.Rest_Implementation
             return newReview.PKID;
         }
 
-        public static int UpdateReview(string pkid, Review review)
+        public static int UpdateReview(string pkid, ProxyReview review)
         {
             Review existingReview = Review.GetReview(Convert.ToInt32(pkid));
             JsonConvert.PopulateObject(JsonConvert.SerializeObject(review), existingReview);

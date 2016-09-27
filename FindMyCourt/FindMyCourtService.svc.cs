@@ -1,6 +1,7 @@
 ﻿using FindMyCourt.Rest_Implementation;
 using FindMyCourtObjectLibrary.Common;
 using FindMyCourtObjectLibrary.Objects;
+using FindMyCourtObjectLibrary.Proxy_Objects;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -161,31 +162,31 @@ namespace FindMyCourt
         }
 
         [return: MessageParameter(Name = "PKID")]
-        public int UpdateUser(string pkid, User user)
+        public int UpdateUser(string pkid, ProxyUser user)
         {
             return UserRest.UpdateUser(pkid, user);
         }
 
         [return: MessageParameter(Name = "PKID")]
-        public int UpdateLocation(string pkid, Location location)
+        public int UpdateLocation(string pkid, ProxyLocation location)
         {
             return LocationRest.UpdateLocation(pkid, location);
         }
 
         [return: MessageParameter(Name = "PKID")]
-        public int UpdateLocationContactDetails(string pkid, LocationContactDetails locationContactDetails)
+        public int UpdateLocationContactDetails(string pkid, ProxyLocationContactDetails locationContactDetails)
         {
             return LocationContactDetailsRest.UpdateLocationContactDetails(pkid, locationContactDetails);
         }
 
         [return: MessageParameter(Name = "PKID")]
-        public int UpdateCourt(string pkid, Court court)
+        public int UpdateCourt(string pkid, ProxyCourt court)
         {
             return CourtRest.UpdateCourt(pkid, court);
         }
 
         [return: MessageParameter(Name = "PKID")]
-        public int UpdateReview(string pkid, Review review)
+        public int UpdateReview(string pkid, ProxyReview review)
         {
             return ReviewRest.UpdateReview(pkid, review);
         }

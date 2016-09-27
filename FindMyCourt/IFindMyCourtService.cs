@@ -1,4 +1,4 @@
-﻿using FindMyCourtObjectLibrary.Objects;
+﻿using FindMyCourtObjectLibrary.Proxy_Objects;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,7 +26,7 @@ namespace FindMyCourt
         [WebInvoke(UriTemplate = "Users/{pkid}",
             Method = "PUT")]
         [return: MessageParameter(Name = "PKID")]
-        int UpdateUser(string pkid, User user);
+        int UpdateUser(string pkid, ProxyUser user);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Users/{pkid}",
@@ -72,7 +72,7 @@ namespace FindMyCourt
         [WebInvoke(UriTemplate = "Locations/{pkid}",
             Method = "PUT")]
         [return: MessageParameter(Name = "PKID")]
-        int UpdateLocation(string pkid, Location location);
+        int UpdateLocation(string pkid, ProxyLocation location);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Locations/{locationID}/ContactDetails",
@@ -90,7 +90,7 @@ namespace FindMyCourt
         [WebInvoke(UriTemplate = "LocationContactDetails/{pkid}",
             Method = "PUT")]
         [return: MessageParameter(Name = "PKID")]
-        int UpdateLocationContactDetails(string pkid, LocationContactDetails locationContactDetails);
+        int UpdateLocationContactDetails(string pkid, ProxyLocationContactDetails locationContactDetails);
         #endregion
 
         #region CourtMethods
@@ -117,7 +117,7 @@ namespace FindMyCourt
         [WebInvoke(UriTemplate = "Courts/{pkid}",
             Method = "PUT")]
         [return: MessageParameter(Name = "PKID")]
-        int UpdateCourt(string pkid, Court court);
+        int UpdateCourt(string pkid, ProxyCourt court);
 
         #endregion
 
@@ -145,7 +145,7 @@ namespace FindMyCourt
         [WebInvoke(UriTemplate = "Reviews/{pkid}",
             Method = "PUT")]
         [return: MessageParameter(Name = "PKID")]
-        int UpdateReview(string pkid, Review review);
+        int UpdateReview(string pkid, ProxyReview review);
 
         #endregion
 

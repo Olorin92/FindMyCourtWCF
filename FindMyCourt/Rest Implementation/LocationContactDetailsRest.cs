@@ -1,4 +1,5 @@
 ﻿using FindMyCourtObjectLibrary.Objects;
+using FindMyCourtObjectLibrary.Proxy_Objects;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace FindMyCourt.Rest_Implementation
             return newContactDetails.PKID;
         }
 
-        public static int UpdateLocationContactDetails(string pkid, LocationContactDetails contactDetails)
+        public static int UpdateLocationContactDetails(string pkid, ProxyLocationContactDetails contactDetails)
         {
             LocationContactDetails existingContactDetails = LocationContactDetails.GetLocationContactDetails(Convert.ToInt32(pkid));
             JsonConvert.PopulateObject(JsonConvert.SerializeObject(contactDetails), existingContactDetails);
