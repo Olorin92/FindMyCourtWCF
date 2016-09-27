@@ -18,7 +18,7 @@ namespace FindMyCourtDAL
         {
             SqlCommand comm = Connection.CreateCommand();
             comm.CommandType = System.Data.CommandType.StoredProcedure;
-            comm.CommandText = "usp_GetCourtReview";
+            comm.CommandText = "usp_GetReview";
 
             comm.Parameters.AddWithValue("@REVIEW_ID", reviewID);
 
@@ -78,7 +78,7 @@ namespace FindMyCourtDAL
         {
             SqlCommand comm = Connection.CreateCommand();
             comm.CommandType = System.Data.CommandType.StoredProcedure;
-            comm.CommandText = "usp_InsertReview";
+            comm.CommandText = "usp_UpdateReview";
 
             comm.Parameters.AddWithValue("@PKID", pkid);
             comm.Parameters.AddWithValue("@REVIEW_TYPE_ID", reviewTypeID);
