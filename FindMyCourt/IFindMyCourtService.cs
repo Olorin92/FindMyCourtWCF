@@ -24,7 +24,8 @@ namespace FindMyCourt
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Users/{pkid}",
-            Method = "PUT")]
+            Method = "PUT",
+            BodyStyle = WebMessageBodyStyle.Bare)]
         [return: MessageParameter(Name = "PKID")]
         int UpdateUser(string pkid, ProxyUser user);
 
@@ -70,7 +71,8 @@ namespace FindMyCourt
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Locations/{pkid}",
-            Method = "PUT")]
+            Method = "PUT",
+            BodyStyle = WebMessageBodyStyle.Bare)]
         [return: MessageParameter(Name = "PKID")]
         int UpdateLocation(string pkid, ProxyLocation location);
 
@@ -88,7 +90,8 @@ namespace FindMyCourt
 
         [OperationContract]
         [WebInvoke(UriTemplate = "LocationContactDetails/{pkid}",
-            Method = "PUT")]
+            Method = "PUT",
+            BodyStyle = WebMessageBodyStyle.Bare)]
         [return: MessageParameter(Name = "PKID")]
         int UpdateLocationContactDetails(string pkid, ProxyLocationContactDetails locationContactDetails);
         #endregion
@@ -115,7 +118,8 @@ namespace FindMyCourt
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Courts/{pkid}",
-            Method = "PUT")]
+            Method = "PUT",
+            BodyStyle = WebMessageBodyStyle.Bare)]
         [return: MessageParameter(Name = "PKID")]
         int UpdateCourt(string pkid, ProxyCourt court);
 
@@ -143,7 +147,8 @@ namespace FindMyCourt
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Reviews/{pkid}",
-            Method = "PUT")]
+            Method = "PUT",
+            BodyStyle = WebMessageBodyStyle.Bare)]
         [return: MessageParameter(Name = "PKID")]
         int UpdateReview(string pkid, ProxyReview review);
 
