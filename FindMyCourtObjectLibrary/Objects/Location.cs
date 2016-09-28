@@ -88,6 +88,10 @@ namespace FindMyCourtObjectLibrary.Objects
                     _courts = Court.GetCourts(PKID);
                 return _courts;
             }
+            set
+            {
+                _courts = value;
+            }
         }
 
         [JsonIgnore]
@@ -239,6 +243,12 @@ namespace FindMyCourtObjectLibrary.Objects
             using (LocationDAL dal = new LocationDAL("environmentName"))
             {
                 _pkid = dal.InsertLocation(_name, _longitude, _latitude, _submittedUserName, _locationDescription);
+            }
+
+            foreach(Court court in Courts)
+            {
+                court.LocationID = _pkid;
+                court.Save();
             }
         }
 
