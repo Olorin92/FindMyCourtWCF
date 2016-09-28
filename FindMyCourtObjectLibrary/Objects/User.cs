@@ -31,11 +31,6 @@ namespace FindMyCourtObjectLibrary.Objects
             {
                 return _pkid;
             }
-            set
-            {
-                _pkid = value;
-                OnPropertyChanged("PKID");
-            }
         }
 
         public string UserName
@@ -241,7 +236,7 @@ namespace FindMyCourtObjectLibrary.Objects
         {
             using (UserDAL dal = new UserDAL("environment"))
             {
-                PKID = dal.CreateUser(FirstName, LastName, UserName, EmailAddress, Salt, _saltedPassword);
+                _pkid = dal.CreateUser(FirstName, LastName, UserName, EmailAddress, Salt, _saltedPassword);
             }
         }
 

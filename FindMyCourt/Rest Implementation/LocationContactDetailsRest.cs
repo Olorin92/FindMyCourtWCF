@@ -20,9 +20,9 @@ namespace FindMyCourt.Rest_Implementation
             return new MemoryStream(Encoding.UTF8.GetBytes(serialization));
         }
 
-        public static int InsertLocationContactDetails(string contactDetails)
+        public static int InsertLocationContactDetails(ProxyLocationContactDetails contactDetails)
         {
-            LocationContactDetails newContactDetails = JsonConvert.DeserializeObject<LocationContactDetails>(contactDetails);
+            LocationContactDetails newContactDetails = JsonConvert.DeserializeObject<LocationContactDetails>(JsonConvert.SerializeObject(contactDetails));
             newContactDetails.Save();
 
             return newContactDetails.PKID;

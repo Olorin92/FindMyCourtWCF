@@ -61,9 +61,9 @@ namespace FindMyCourt.Rest_Implementation
             return new MemoryStream(Encoding.UTF8.GetBytes(serialization));
         }
 
-        public static int InsertLocation(string location)
+        public static int InsertLocation(ProxyLocation location)
         {
-            Location newLocation = JsonConvert.DeserializeObject<Location>(location);
+            Location newLocation = JsonConvert.DeserializeObject<Location>(JsonConvert.SerializeObject(location));
             newLocation.Save();
 
             return newLocation.PKID;

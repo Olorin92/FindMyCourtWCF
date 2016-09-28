@@ -26,11 +26,6 @@ namespace FindMyCourtObjectLibrary.Objects
             {
                 return _pkid;
             }
-            set
-            {
-                _pkid = value;
-                OnPropertyChanged("PKID");
-            }
         }
         public int LocationID
         {
@@ -172,15 +167,15 @@ namespace FindMyCourtObjectLibrary.Objects
 
         private void Fetch(SqlDataReader dr)
         {
-            PKID = (int)dr["COURT_ID"];
-            CourtName = (string)dr["COURT_NAME"];
-            CourtTypeID = (int)dr["COURT_TYPE_ID"];
-            BackboardTypeID = (int)dr["BACKBOARD_TYPE_ID"];
-            HasNet = Convert.ToBoolean(dr["HAS_NET"]);
-            HasScoreboard = Convert.ToBoolean(dr["HAS_SCOREBOARD"]);
-            SubmittedUserName = (string)dr["SUBMITTED_USER_NAME"];
-            LocationID = (int)dr["LOCATION_ID"];
-            IsIndoor = (bool)dr["IS_INDOOR"];
+            _pkid = (int)dr["COURT_ID"];
+            _courtName = (string)dr["COURT_NAME"];
+            _courtTypeID = (int)dr["COURT_TYPE_ID"];
+            _backboardTypeID = (int)dr["BACKBOARD_TYPE_ID"];
+            _hasNet = Convert.ToBoolean(dr["HAS_NET"]);
+            _hasScoreboard = Convert.ToBoolean(dr["HAS_SCOREBOARD"]);
+            _submittedUserName = (string)dr["SUBMITTED_USER_NAME"];
+            _locationID = (int)dr["LOCATION_ID"];
+            _isIndoor = (bool)dr["IS_INDOOR"];
 
             IsNew = false;
             IsDirty = false;

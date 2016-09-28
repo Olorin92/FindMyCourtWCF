@@ -17,15 +17,12 @@ namespace FindMyCourt
     public class FindMyCourtService : IFindMyCourtService
     {
 
-        public int CreateUser(Stream user)
+        public int CreateUser(ProxyUser user)
         {
-            using (StreamReader reader = new StreamReader(user))
-            {
-                return UserRest.InsertUser(reader.ReadToEnd());
-            }
+            return UserRest.InsertUser(user);
         }
 
-        public Stream GetUser(string pkid)
+        public ProxyUser GetUser(string pkid)
         {
             WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
             return UserRest.GetUser(pkid);
@@ -50,12 +47,9 @@ namespace FindMyCourt
             return LocationRest.GetLocations(minLat, maxLat, minLon, maxLon, isLightWeight, onlyIndoor, onlyOutdoor);
         }
 
-        public int InsertLocation(Stream location)
+        public int InsertLocation(ProxyLocation location)
         {
-            using (StreamReader reader = new StreamReader(location))
-            {
-                return LocationRest.InsertLocation(reader.ReadToEnd());
-            }
+            return LocationRest.InsertLocation(location);
         }
 
         public Stream GetLocation(string pkid)
@@ -70,12 +64,9 @@ namespace FindMyCourt
             return LocationContactDetailsRest.GetLocationContactDetails(locationID);
         }
 
-        public int InsertLocationContactDetails(Stream locationContactDetails)
+        public int InsertLocationContactDetails(ProxyLocationContactDetails locationContactDetails)
         {
-            using (StreamReader reader = new StreamReader(locationContactDetails))
-            {
-                return LocationContactDetailsRest.InsertLocationContactDetails(reader.ReadToEnd());
-            }
+            return LocationContactDetailsRest.InsertLocationContactDetails(locationContactDetails);
         }
 
         public Stream GetCourt(string id)
@@ -90,12 +81,9 @@ namespace FindMyCourt
             return CourtRest.GetCourts(locationID);
         }
 
-        public int InsertCourt(Stream court)
+        public int InsertCourt(ProxyCourt court)
         {
-            using (StreamReader reader = new StreamReader(court))
-            {
-                return CourtRest.InsertCourt(reader.ReadToEnd());
-            }
+            return CourtRest.InsertCourt(court);
         }
 
         public Stream GetLocationReviews(string locationID)
@@ -110,12 +98,9 @@ namespace FindMyCourt
             return ReviewRest.GetCourtReviews(courtID);
         }
 
-        public int InsertReview(Stream review)
+        public int InsertReview(ProxyReview review)
         {
-            using (StreamReader reader = new StreamReader(review))
-            {
-                return ReviewRest.InsertReview(reader.ReadToEnd());
-            }
+            return ReviewRest.InsertReview(review);
         }
 
         public Stream GetCourtTypes()
@@ -136,30 +121,30 @@ namespace FindMyCourt
             return EnumsRest.GetReviewTypes();
         }
 
-        public Stream Login()
-        {
-            string username = WebOperationContext.Current.IncomingRequest.Headers["username"];
-            string password = WebOperationContext.Current.IncomingRequest.Headers["password"];
+        //public Stream Login()
+        //{
+        //    string username = WebOperationContext.Current.IncomingRequest.Headers["username"];
+        //    string password = WebOperationContext.Current.IncomingRequest.Headers["password"];
 
-            if ((username == null || username == string.Empty) || (password == null || password == string.Empty))
-            {
-                throw new WebException("You must provide both a username and a password to login");
-            }
-            else
-            {
-                User user = User.GetUsers(null, username)[0];
-                string saltedPassword = SaltedPasswordUtility.GenerateSaltedPassword(user.Salt, password);
+        //    if ((username == null || username == string.Empty) || (password == null || password == string.Empty))
+        //    {
+        //        throw new WebException("You must provide both a username and a password to login");
+        //    }
+        //    else
+        //    {
+        //        User user = User.GetUsers(null, username)[0];
+        //        string saltedPassword = SaltedPasswordUtility.GenerateSaltedPassword(user.Salt, password);
 
-                if (saltedPassword == user.SaltedPassword)
-                {
-                    return UserRest.GetUser(user.PKID.ToString());
-                }
-                else
-                {
-                    throw new WebException("Invalid credentials");
-                }
-            }
-        }
+        //        if (saltedPassword == user.SaltedPassword)
+        //        {
+        //            return UserRest.GetUser(user.PKID.ToString());
+        //        }
+        //        else
+        //        {
+        //            throw new WebException("Invalid credentials");
+        //        }
+        //    }
+        //}
 
         [return: MessageParameter(Name = "PKID")]
         public int UpdateUser(string pkid, ProxyUser user)

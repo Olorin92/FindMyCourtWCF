@@ -28,9 +28,9 @@ namespace FindMyCourt.Rest_Implementation
             return new MemoryStream(Encoding.UTF8.GetBytes(serialization));
         }
 
-        public static int InsertCourt(string court)
+        public static int InsertCourt(ProxyCourt court)
         {
-            Court newCourt = JsonConvert.DeserializeObject<Court>(court);
+            Court newCourt = JsonConvert.DeserializeObject<Court>(JsonConvert.SerializeObject(court));
             newCourt.Save();
 
             return newCourt.PKID;

@@ -18,9 +18,10 @@ namespace FindMyCourt
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Users",
-            Method = "POST")]
+            Method = "POST",
+            BodyStyle = WebMessageBodyStyle.Bare)]
         [return: MessageParameter(Name = "PKID")]
-        int CreateUser(Stream user);
+        int CreateUser(ProxyUser user);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Users/{pkid}",
@@ -31,9 +32,10 @@ namespace FindMyCourt
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Users/{pkid}",
-            Method = "GET")]
+            Method = "GET",
+            BodyStyle = WebMessageBodyStyle.Bare)]
         [return: MessageParameter(Name = "User")]
-        Stream GetUser(string pkid);
+        ProxyUser GetUser(string pkid);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Users?email={email}&username={username}",
@@ -67,7 +69,7 @@ namespace FindMyCourt
         [WebInvoke(UriTemplate = "Locations",
             Method = "POST")]
         [return: MessageParameter(Name = "PKID")]
-        int InsertLocation(Stream location);
+        int InsertLocation(ProxyLocation location);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Locations/{pkid}",
@@ -86,7 +88,7 @@ namespace FindMyCourt
         [WebInvoke(UriTemplate = "LocationContactDetails",
             Method = "POST")]
         [return: MessageParameter(Name = "PKID")]
-        int InsertLocationContactDetails(Stream locationContactDetails);
+        int InsertLocationContactDetails(ProxyLocationContactDetails locationContactDetails);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "LocationContactDetails/{pkid}",
@@ -114,7 +116,7 @@ namespace FindMyCourt
         [WebInvoke(UriTemplate = "Courts",
             Method = "POST")]
         [return: MessageParameter(Name = "PKID")]
-        int InsertCourt(Stream court);
+        int InsertCourt(ProxyCourt court);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Courts/{pkid}",
@@ -143,7 +145,7 @@ namespace FindMyCourt
         [WebInvoke(UriTemplate = "Reviews",
             Method = "POST")]
         [return: MessageParameter(Name = "PKID")]
-        int InsertReview(Stream review);
+        int InsertReview(ProxyReview review);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Reviews/{pkid}",
@@ -178,10 +180,10 @@ namespace FindMyCourt
 
         #region Auth Methods
 
-        [OperationContract]
-        [WebInvoke(UriTemplate = "Login",
-            Method = "GET")]
-        Stream Login();
+        //[OperationContract]
+        //[WebInvoke(UriTemplate = "Login",
+        //    Method = "GET")]
+        //Stream Login();
 
         #endregion
     }

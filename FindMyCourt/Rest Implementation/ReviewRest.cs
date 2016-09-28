@@ -28,9 +28,9 @@ namespace FindMyCourt.Rest_Implementation
             return new MemoryStream(Encoding.UTF8.GetBytes(serialization));
         }
 
-        public static int InsertReview(string review)
+        public static int InsertReview(ProxyReview review)
         {
-            Review newReview = JsonConvert.DeserializeObject<Review>(review);
+            Review newReview = JsonConvert.DeserializeObject<Review>(JsonConvert.SerializeObject(review));
             newReview.Save();
 
             return newReview.PKID;

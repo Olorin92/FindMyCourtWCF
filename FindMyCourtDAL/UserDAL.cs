@@ -83,13 +83,17 @@ namespace FindMyCourtDAL
         {
             SqlCommand comm = Connection.CreateCommand();
             comm.CommandText = "usp_UpdateUser";
-            comm.Parameters.AddWithValue("PKID", pkid);
+            comm.CommandType = System.Data.CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@PKID", pkid);
             comm.Parameters.AddWithValue("@FIRST_NAME", firstName);
             comm.Parameters.AddWithValue("@LAST_NAME", lastName);
             comm.Parameters.AddWithValue("@USER_NAME", userName);
             comm.Parameters.AddWithValue("@EMAIL_ADDRESS", emailAddress);
             comm.Parameters.AddWithValue("@SALT", salt);
             comm.Parameters.AddWithValue("@SALTED_PASSWORD", saltedPassword);
+
+            comm.ExecuteNonQuery();
         }
     }
 }

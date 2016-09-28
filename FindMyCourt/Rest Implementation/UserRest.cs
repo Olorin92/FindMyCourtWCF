@@ -12,9 +12,9 @@ namespace FindMyCourt.Rest_Implementation
 {
     public static class UserRest
     {
-        public static int InsertUser(string user)
+        public static int InsertUser(ProxyUser user)
         {
-            User newUser = JsonConvert.DeserializeObject<User>(user);
+            User newUser = JsonConvert.DeserializeObject<User>(JsonConvert.SerializeObject(user));
             newUser.Save();
 
             return newUser.PKID;
@@ -29,11 +29,11 @@ namespace FindMyCourt.Rest_Implementation
             return existingUser.PKID;
         }
 
-        public static Stream GetUser(string pkid)
+        public static ProxyUser GetUser(string pkid)
         {
             User user = User.GetUser(Convert.ToInt32(pkid));
             string serialization = JsonConvert.SerializeObject(user);
-            return new MemoryStream(Encoding.UTF8.GetBytes(serialization));
+            return JsonConvert.DeserializeObject<ProxyUser>(serialization);
         }
 
         public static Stream GetUsers(string email, string username)

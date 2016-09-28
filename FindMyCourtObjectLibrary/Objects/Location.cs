@@ -25,11 +25,6 @@ namespace FindMyCourtObjectLibrary.Objects
             {
                 return _pkid;
             }
-            set
-            {
-                _pkid = value;
-                OnPropertyChanged("PKID");
-            }
         }
 
         public string Name
