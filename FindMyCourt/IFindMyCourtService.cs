@@ -67,7 +67,8 @@ namespace FindMyCourt
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Locations",
-            Method = "POST")]
+            Method = "POST",
+            BodyStyle = WebMessageBodyStyle.Bare)]
         [return: MessageParameter(Name = "PKID")]
         int InsertLocation(ProxyLocation location);
 
