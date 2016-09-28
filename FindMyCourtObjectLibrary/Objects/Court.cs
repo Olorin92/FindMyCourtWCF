@@ -19,6 +19,7 @@ namespace FindMyCourtObjectLibrary.Objects
         private bool _hasScoreboard;
         private string _submittedUserName;
         private bool _isIndoor;
+        private string _courtDescription;
 
         public int PKID
         {
@@ -124,6 +125,19 @@ namespace FindMyCourtObjectLibrary.Objects
             }
         }
 
+        public string CourtDescription
+        {
+            get
+            {
+                return _courtDescription;
+            }
+            set
+            {
+                _courtDescription = value;
+                OnPropertyChanged("CourtDescription");
+            }
+        }
+
         public Court()
         {
             IsNew = true;
@@ -176,6 +190,7 @@ namespace FindMyCourtObjectLibrary.Objects
             _submittedUserName = (string)dr["SUBMITTED_USER_NAME"];
             _locationID = (int)dr["LOCATION_ID"];
             _isIndoor = (bool)dr["IS_INDOOR"];
+            _courtDescription = (string)dr["COURT_DESCRIPTION"];
 
             IsNew = false;
             IsDirty = false;
@@ -185,7 +200,7 @@ namespace FindMyCourtObjectLibrary.Objects
         {
             using (CourtDAL dal = new CourtDAL("environment"))
             {
-                _pkid = dal.InsertCourt(CourtName, LocationID, CourtTypeID, BackboardTypeID, HasNet, HasScoreboard, SubmittedUserName);
+                _pkid = dal.InsertCourt(CourtName, LocationID, CourtTypeID, BackboardTypeID, HasNet, HasScoreboard, SubmittedUserName, _courtDescription);
             }
         }
 
@@ -193,7 +208,7 @@ namespace FindMyCourtObjectLibrary.Objects
         {
             using (CourtDAL dal = new CourtDAL("environment"))
             {
-                dal.UpdateCourt(_pkid, _courtName, _locationID, _courtTypeID, _backboardTypeID, _hasNet, _hasScoreboard);
+                dal.UpdateCourt(_pkid, _courtName, _locationID, _courtTypeID, _backboardTypeID, _hasNet, _hasScoreboard, _courtDescription);
             }
         }
     }

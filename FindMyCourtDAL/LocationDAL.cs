@@ -46,7 +46,8 @@ namespace FindMyCourtDAL
         public int InsertLocation(string name,
                                   double longitude,
                                   double latitude,
-                                  string createUser)
+                                  string createUser,
+                                  string locationDescription)
         {
             SqlCommand comm = Connection.CreateCommand();
             comm.CommandText = "usp_InsertLocation";
@@ -58,6 +59,7 @@ namespace FindMyCourtDAL
             comm.Parameters.AddWithValue("@LONGITUDE", longitude);
             comm.Parameters.AddWithValue("@LATITUDE", latitude);
             comm.Parameters.AddWithValue("@CREATE_USER", createUser);
+            comm.Parameters.AddWithValue("@LOCATION_DESCRIPTION", locationDescription);
 
             comm.ExecuteNonQuery();
 
@@ -67,7 +69,8 @@ namespace FindMyCourtDAL
         public void UpdateLocation(int pkid,
                                    string name,
                                    double longitude,
-                                   double latitude)
+                                   double latitude,
+                                   string locationDescription)
         {
             SqlCommand comm = Connection.CreateCommand();
             comm.CommandText = "usp_UpdateLocation";
@@ -77,6 +80,7 @@ namespace FindMyCourtDAL
             comm.Parameters.AddWithValue("@LOCATION_NAME", name);
             comm.Parameters.AddWithValue("@LONGITUDE", longitude);
             comm.Parameters.AddWithValue("@LATITUDE", latitude);
+            comm.Parameters.AddWithValue("@LOCATION_DESCRIPTION", locationDescription);
 
             comm.ExecuteNonQuery();
         }

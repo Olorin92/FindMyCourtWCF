@@ -43,7 +43,8 @@ namespace FindMyCourtDAL
                                int backboardTypeID,
                                bool hasNet,
                                bool hasScoreboard,
-                               string createUser)
+                               string createUser,
+                               string courtDescription)
         {
             SqlCommand comm = Connection.CreateCommand();
             comm.CommandType = System.Data.CommandType.StoredProcedure;
@@ -58,6 +59,7 @@ namespace FindMyCourtDAL
             comm.Parameters.AddWithValue("@HAS_NET", hasNet);
             comm.Parameters.AddWithValue("@HAS_SCOREBOARD", hasScoreboard);
             comm.Parameters.AddWithValue("@CREATE_USER", createUser);
+            comm.Parameters.AddWithValue("@COURT_DESCRIPTION", courtDescription);
 
             comm.ExecuteNonQuery();
 
@@ -70,7 +72,8 @@ namespace FindMyCourtDAL
                                 int courtTypeID,
                                 int backboardTypeID,
                                 bool hasNet,
-                                bool hasScoreboard)
+                                bool hasScoreboard,
+                                string courtDescription)
         {
             SqlCommand comm = Connection.CreateCommand();
             comm.CommandType = System.Data.CommandType.StoredProcedure;
@@ -83,6 +86,7 @@ namespace FindMyCourtDAL
             comm.Parameters.AddWithValue("@BACKBOARD_TYPE_ID", backboardTypeID);
             comm.Parameters.AddWithValue("@HAS_NET", hasNet);
             comm.Parameters.AddWithValue("@HAS_SCOREBOARD", hasScoreboard);
+            comm.Parameters.AddWithValue("@COURT_DESCRIPTION", courtDescription);
 
             comm.ExecuteNonQuery();
         }

@@ -18,6 +18,7 @@ namespace FindMyCourtObjectLibrary.Objects
         private string _submittedUserName;
         private List<Court> _courts;
         private List<Review> _reviews;
+        private string _locationDescription;
 
         public int PKID
         {
@@ -158,6 +159,19 @@ namespace FindMyCourtObjectLibrary.Objects
             }
         }
 
+        public string LocationDescription
+        {
+            get
+            {
+                return _locationDescription;
+            }
+            set
+            {
+                _locationDescription = value;
+                OnPropertyChanged("LocationDescription");
+            }
+        }
+
         public Location()
         {
             IsNew = true;
@@ -213,6 +227,7 @@ namespace FindMyCourtObjectLibrary.Objects
             _name = (string)dr["LOCATION_NAME"];
             _longitude = (double)dr["LONGITUDE"];
             _latitude = (double)dr["LATITUDE"];
+            _locationDescription = (string)dr["LOCATION_DESCRIPTION"];
             _submittedUserName = (string)dr["CREATE_USER_NAME"];
 
             IsDirty = false;
@@ -223,7 +238,7 @@ namespace FindMyCourtObjectLibrary.Objects
         {
             using (LocationDAL dal = new LocationDAL("environmentName"))
             {
-                _pkid = dal.InsertLocation(_name, _longitude, _latitude, _submittedUserName);
+                _pkid = dal.InsertLocation(_name, _longitude, _latitude, _submittedUserName, _locationDescription);
             }
         }
 
@@ -231,7 +246,7 @@ namespace FindMyCourtObjectLibrary.Objects
         {
             using (LocationDAL dal = new LocationDAL("environmentName"))
             {
-                dal.UpdateLocation(_pkid, _name, _longitude, _latitude);
+                dal.UpdateLocation(_pkid, _name, _longitude, _latitude, _locationDescription);
             }
         }
     }
