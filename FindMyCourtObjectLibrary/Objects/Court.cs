@@ -190,7 +190,7 @@ namespace FindMyCourtObjectLibrary.Objects
             _submittedUserName = (string)dr["SUBMITTED_USER_NAME"];
             _locationID = (int)dr["LOCATION_ID"];
             _isIndoor = (bool)dr["IS_INDOOR"];
-            _courtDescription = (string)dr["COURT_DESCRIPTION"];
+            _courtDescription = dr["COURT_DESCRIPTION"] as string;
 
             IsNew = false;
             IsDirty = false;

@@ -227,7 +227,7 @@ namespace FindMyCourtObjectLibrary.Objects
             _name = (string)dr["LOCATION_NAME"];
             _longitude = (double)dr["LONGITUDE"];
             _latitude = (double)dr["LATITUDE"];
-            _locationDescription = (string)dr["LOCATION_DESCRIPTION"];
+            _locationDescription = dr["LOCATION_DESCRIPTION"] as string;
             _submittedUserName = (string)dr["CREATE_USER_NAME"];
 
             IsDirty = false;
