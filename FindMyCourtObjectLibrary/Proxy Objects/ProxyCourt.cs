@@ -28,5 +28,7 @@ namespace FindMyCourtObjectLibrary.Proxy_Objects
         public string SubmittedUserName { get; set; }
         [DataMember]
         public bool IsIndoor { get; set; }
+        [DataMember]
+        public string CourtDescription { get; set; }
     }
 }

@@ -32,5 +32,7 @@ namespace FindMyCourtObjectLibrary.Proxy_Objects
         public bool HasIndoor { get; set; }
         [DataMember]
         public bool HasOutdoor { get; set; }
+        [DataMember]
+        public string LocationDescription { get; set; }
     }
 }
