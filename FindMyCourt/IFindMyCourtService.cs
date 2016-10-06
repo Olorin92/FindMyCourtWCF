@@ -87,7 +87,8 @@ namespace FindMyCourt
 
         [OperationContract]
         [WebInvoke(UriTemplate = "LocationContactDetails",
-            Method = "POST")]
+            Method = "POST",
+            BodyStyle = WebMessageBodyStyle.Bare)]
         [return: MessageParameter(Name = "PKID")]
         int InsertLocationContactDetails(ProxyLocationContactDetails locationContactDetails);
 
@@ -115,7 +116,8 @@ namespace FindMyCourt
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Courts",
-            Method = "POST")]
+            Method = "POST",
+            BodyStyle = WebMessageBodyStyle.Bare)]
         [return: MessageParameter(Name = "PKID")]
         int InsertCourt(ProxyCourt court);
 
@@ -144,7 +146,8 @@ namespace FindMyCourt
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Reviews",
-            Method = "POST")]
+            Method = "POST",
+            BodyStyle = WebMessageBodyStyle.Bare)]
         [return: MessageParameter(Name = "PKID")]
         int InsertReview(ProxyReview review);
 
